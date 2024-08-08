@@ -1,4 +1,12 @@
-import { Body, Controller, Get, Param, Post, Put } from '@nestjs/common';
+import {
+  Body,
+  Controller,
+  Delete,
+  Get,
+  Param,
+  Post,
+  Put,
+} from '@nestjs/common';
 import { RestaurantsService } from './restaurants.service';
 import { CreateRestaurantInput } from './domain/inputs/create-restaurant.input';
 
@@ -27,5 +35,10 @@ export class RestaurantsController {
     @Body() body: CreateRestaurantInput,
   ) {
     return this.restaurantsService.updateRestaurant(id, body);
+  }
+
+  @Delete('/:id')
+  async deleteRestaurant(@Param('id') id: string) {
+    return this.restaurantsService.deleteRestaurant(id);
   }
 }
