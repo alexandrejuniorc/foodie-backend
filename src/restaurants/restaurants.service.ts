@@ -3,6 +3,7 @@ import { ListAllRestaurantsUseCase } from './use-cases/list-all-restaurants.use-
 import { FindRestaurantUseCase } from './use-cases/find-restaurant.use-case';
 import { CreateRestaurantUseCase } from './use-cases/create-restaurant.use-case';
 import { CreateRestaurantInput } from './domain/inputs/create-restaurant.input';
+import { UpdateRestaurantUseCase } from './use-cases/update-restaurant.use-case';
 
 @Injectable()
 export class RestaurantsService {
@@ -10,6 +11,7 @@ export class RestaurantsService {
     private listAllRestaurantsUseCase: ListAllRestaurantsUseCase,
     private findRestaurantUseCase: FindRestaurantUseCase,
     private createRestaurantUseCase: CreateRestaurantUseCase,
+    private updateRestaurantUseCase: UpdateRestaurantUseCase,
   ) {}
 
   async listRestaurants() {
@@ -22,5 +24,9 @@ export class RestaurantsService {
 
   async createRestaurant(data: CreateRestaurantInput) {
     return this.createRestaurantUseCase.execute(data);
+  }
+
+  async updateRestaurant(id: string, data: CreateRestaurantInput) {
+    return this.updateRestaurantUseCase.execute(id, data);
   }
 }
