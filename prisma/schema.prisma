@@ -26,13 +26,13 @@ model Restaurant {
 }
 
 model Food {
-  id        String @id @default(uuid())
+  id        String  @id @default(uuid())
   name      String
   price     Float
   time      Int
   delivery  Float
   rating    Float
-  image_url String
+  image_url String?
 
   created_at DateTime @default(now())
   updated_at DateTime @updatedAt
